@@ -14,23 +14,22 @@
   </head>
   <body>
     <header>
-      <h1>Vue Events</h1>
+      <h1>Vue Course Goals</h1>
     </header>
-    <section id="events">
-      <h2>Events in Action</h2>
-      <button v-on:click="add(5)">Add</button>
-      <button v-on:click="reduce(5)">Reduce</button>
-      <p v-once> Initial value: {{ counter }} </p>
-      <p>Result: {{ counter }}</p>
+    <section id="user-goals">
+      <h2>My course goals</h2>
+      <input v-model="enteredGoals" type="text" />
 
-      <!-- computed property --> 
-      <input type="text" v-model="name">
-      <p> Your name : {{ fullName }}</p>
+      <button @click="addGoal">Add Goal</button>
 
-      <!-- Modifiers -->
-      <form action="">
-        <button type="submit" @click.prevent="submitForm">submit</button>
-      </form>
+      <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
+
+      <ul v-else>
+        <li v-for="(goal, index) in goals"> {{ index + 1 }}: {{ goal }} </li>
+      </ul>
+
+      <!--For object looping-->
+      <p v-for="(value, key) in obj"> {{ key }}: {{ value }} </p>
     </section>
   </body>
 </html>
