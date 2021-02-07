@@ -25,7 +25,14 @@
       <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
 
       <ul v-else>
-        <li v-for="(goal, index) in goals"> {{ index + 1 }}: {{ goal }} </li>
+        <!--:key means that v-bind:key. We can bind with database' s id-->
+        <li v-for="(goal, index) in goals" :key="goal" @click="removeGoal(index)"> {{ index + 1 }}: {{ goal }} 
+          <p>
+            <!--when user click the input it is deleted. So we have to stop deleting with @click.stop-->
+            <input type="text" @click.stop>
+          </p>
+          
+        </li>
       </ul>
 
       <!--For object looping-->

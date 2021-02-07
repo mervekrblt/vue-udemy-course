@@ -15,8 +15,13 @@ const app = Vue.createApp({
       if(this.enteredGoals.length !==0){
         this.goals.push(this.enteredGoals)
         console.log(this.goals)
+        this.enteredGoals =''
       }
       
+    },
+    removeGoal(idx){
+      this.goals.splice(idx, 1)
+      console.log(idx)
     }
   }
 });
