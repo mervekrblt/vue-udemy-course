@@ -8,16 +8,26 @@ export default {
           name: "Manuel Lorenz",
           phone: "0123 45678 90",
           email: "manuel@localhost.com",
+          isFavorite: true
         },
         {
           id: "julie",
           name: "Julie Jones",
           phone: "0987 654421 21",
           email: "julie@localhost.com",
+          isFavorite: true
         },
       ],
     };
   },
+
+  methods: {
+    toggleFavStatus(firendId){
+      console.log(firendId)
+      const identFriend = this.friends.find(friend => friend.id === firendId)
+      identFriend.isFavorite = !identFriend.isFavorite
+    }
+  }
 };
 </script>
 
@@ -29,11 +39,13 @@ export default {
     <ul>
       <friend-contact
         v-for="friend in friends"
+        :id="friend.id"
         :key= "friend.id"
         :name= "friend.name"
         :phone= "friend.phone"
         :email= "friend.email"
-        :is-favorite= "true"
+        :is-favorite= "friend.isFavorite"
+        @toogle-favorite="toggleFavStatus"
       ></friend-contact>
 
       <friend-contact

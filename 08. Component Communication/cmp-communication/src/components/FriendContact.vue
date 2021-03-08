@@ -8,6 +8,10 @@ export default {
   // ],
 
   props: {
+    id: {
+      type: String,
+      required: true
+    },
     name: {
       type: String,
       required: true
@@ -23,7 +27,6 @@ export default {
     isFavorite: {
       type: Boolean,
       required: false,
-      default: false
     },
   },
 
@@ -31,7 +34,6 @@ export default {
     return {
       detailsAreVisible: false,
       // FOR MUTATE PROP
-      friendFavorite: this.isFavorite
     };
   },
   methods: {
@@ -51,7 +53,9 @@ export default {
       //   this.friendFavorite = '1'
       // }
 
-      this.friendFavorite = !this.friendFavorite;
+      //this.friendFavorite = !this.friendFavorite;
+
+      this.$emit('toogle-favorite', this.id)
     }
   }
 };
@@ -59,7 +63,7 @@ export default {
 
 <template>
   <li>
-    <h2>{{ name }} {{ friendFavorite ? '(Favorite)' : '' }} </h2>
+    <h2>{{ name }} {{ isFavorite ? '(Favorite)' : '' }} </h2>
     <button @click="addFavorite">Add Favorite</button>
     <button @click="toggleDetails">{{ detailsAreVisible ? 'Hide' : 'Show' }} Details</button>
     <ul v-if="detailsAreVisible">
