@@ -6,7 +6,7 @@ export default {
   //   'email',
   //   'isFavorite'
   // ],
-  emit: ['toggle-favorite'],
+  emit: ['toggle-favorite', 'del-item'],
 
   props: {
     id: {
@@ -57,6 +57,10 @@ export default {
       //this.friendFavorite = !this.friendFavorite;
 
       this.$emit('toogle-favorite', this.id)
+    },
+
+    deleteItem() {
+      this.$emit('del-item', this.id)
     }
   }
 };
@@ -65,8 +69,13 @@ export default {
 <template>
   <li>
     <h2>{{ name }} {{ isFavorite ? '(Favorite)' : '' }} </h2>
+
     <button @click="addFavorite">Add Favorite</button>
+
     <button @click="toggleDetails">{{ detailsAreVisible ? 'Hide' : 'Show' }} Details</button>
+
+    <button @click="deleteItem">Delete</button>
+
     <ul v-if="detailsAreVisible">
       <li>
         <strong>Phone:</strong>

@@ -63,4 +63,10 @@ export default {
 #app form div {
   margin: 1rem 0;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 </style>

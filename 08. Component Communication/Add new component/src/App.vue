@@ -42,6 +42,12 @@ export default {
       //console.log(newFriend)
 
       this.friends.push(newFriend)
+    },
+
+    delItem(friendId) {
+      this.friends = this.friends.filter(friend => friend.id !== friendId)
+      //console.log(deleted)
+      
     }
   }
 };
@@ -65,6 +71,7 @@ export default {
         :email= "friend.email"
         :is-favorite= "friend.isFavorite"
         @toogle-favorite="toggleFavStatus"
+        @del-item="delItem"
       ></friend-contact>
 
       <friend-contact
