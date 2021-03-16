@@ -1,16 +1,27 @@
 <script>
 export default {
-
+    mounted() {
+        console.log(this.$slots.header)
+    }
 }
 </script>
 
 <template>
   <div>
+      <header v-if="$slots.header">
+        <slot name="header"></slot>  
+      </header>
       <slot></slot>
   </div>
 </template>
 
 <style scoped>
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 div {
   margin: 2rem auto;
   max-width: 30rem;

@@ -1,11 +1,17 @@
 <template>
   <base-card>
-    <div>
+
+    <template #header>
       <h3>{{ fullName }}</h3>
       <base-badge :type="role" :caption="role.toUpperCase()"></base-badge>
-    </div>
-    <p>{{ infoText }}</p>
-    <p>{{ phone }}</p>
+    </template>
+
+    <template #default>
+      <p>{{ infoText }}</p>
+      <p>{{ phone }}</p>
+    </template>
+
+    
   </base-card>
 </template>
 
@@ -14,19 +20,3 @@ export default {
   props: ['fullName', 'infoText', 'role', 'phone'],
 };
 </script>
-
-<style scoped>
-section {
-  margin: 2rem auto;
-  max-width: 30rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  padding: 1rem;
-}
-
-section div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-</style>
