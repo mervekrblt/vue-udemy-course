@@ -1,12 +1,12 @@
 <template>
-  <section>
+  <base-card>
     <div>
       <h3>{{ fullName }}</h3>
       <base-badge :type="role" :caption="role.toUpperCase()"></base-badge>
     </div>
     <p>{{ infoText }}</p>
     <p>{{ phone }}</p>
-  </section>
+  </base-card>
 </template>
 
 <script>
@@ -15,7 +15,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 section {
   margin: 2rem auto;
   max-width: 30rem;
