@@ -1,4 +1,14 @@
 <template>
+  <base-dialog v-if="inputIsInvalid" title="Invalid input">
+    <template #default>
+      <p>Oppss...</p>
+    </template>
+
+    <template #actions>
+      <base-button @click="closeDialog"> Okay </base-button>
+    </template>
+  </base-dialog>
+
   <base-card>
     <form>
       <div class="form-control">
@@ -25,7 +35,19 @@
 </template>
 
 <script>
+import BaseDialog from '../UI/BaseDialog'
+
 export default {
+
+  components: {
+    BaseDialog
+  },
+
+  data() {
+    return {
+      inputIsInvalid: false,
+    }
+  },
 
   inject: ['addResources'],
 
@@ -37,12 +59,17 @@ export default {
       const enteredDesc = this.$refs.descInput.value
       const enteredLink = this.$refs.linkInput.value
 
-      if(this.enteredTitle.trim() === '' || this.enteredDesc.trim() || this.enteredLink.trim()){
+      if(enteredTitle.trim() === '' || enteredDesc.trim() || enteredLink.trim()){
+        this.inputIsInvalid = true
         return
       }
 
       this.addResources(enteredTitle, enteredDesc, enteredLink)
     },
+
+    closeDialog() {
+      this.inputIsInvalid = false
+    }
   }
 }
 </script>
