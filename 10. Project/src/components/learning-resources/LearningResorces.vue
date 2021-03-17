@@ -20,7 +20,8 @@
 import BaseCard from '../UI/BaseCard.vue'
 export default {
   components: { BaseCard },
-    props: ['res']
+  //inject: ['resources']
+  props: ['res'],
 }
 </script>
 
