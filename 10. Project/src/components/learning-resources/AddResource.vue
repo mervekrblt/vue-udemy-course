@@ -37,6 +37,10 @@ export default {
       const enteredDesc = this.$refs.descInput.value
       const enteredLink = this.$refs.linkInput.value
 
+      if(this.enteredTitle.trim() === '' || this.enteredDesc.trim() || this.enteredLink.trim()){
+        return
+      }
+
       this.addResources(enteredTitle, enteredDesc, enteredLink)
     },
   }
