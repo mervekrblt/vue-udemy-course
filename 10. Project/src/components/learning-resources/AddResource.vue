@@ -59,7 +59,7 @@ export default {
       const enteredDesc = this.$refs.descInput.value
       const enteredLink = this.$refs.linkInput.value
 
-      if(enteredTitle.trim() === '' || enteredDesc.trim() || enteredLink.trim()){
+      if(enteredTitle.trim() === '' || enteredDesc.trim() === '' || enteredLink.trim() === ''){
         this.inputIsInvalid = true
         return
       }

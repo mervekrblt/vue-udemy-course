@@ -41,7 +41,7 @@ export default {
                     link: 'https://vuejs.org/',
                 },
                 {
-                    id: 'offical guide',
+                    id: 'google',
                     title: 'google',
                     description: 'google',
                     link: 'https://google.com/',
@@ -53,7 +53,8 @@ export default {
     provide(){
         return {
             resources: this.storedResources,
-            addResources: this.addResources
+            addResources: this.addResources,
+            removeResource: this.removeResource
         }
     },
 
@@ -81,6 +82,12 @@ export default {
 
             this.storedResources.unshift(newResource)
             this.selectedTab = 'stored-resources'
+        },
+
+        removeResource(resId) {
+            const removeItem = this.storedResources.findIndex(res => res.id === resId)
+            console.log(resId)
+            this.storedResources.splice(removeItem, 1)
         }
     }
 }
