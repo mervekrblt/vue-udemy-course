@@ -70,6 +70,16 @@ export default {
           rating: this.chosenRating
         })
       })
+      .then(response => {
+        if(response.ok) {
+          // do something
+        }else {
+          alert('Something went wrong')
+        }
+      })
+      .catch(err => {
+        alert(err)
+      })
 
       this.enteredName = '';
       this.chosenRating = null;
