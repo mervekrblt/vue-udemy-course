@@ -9,10 +9,23 @@ import TeamMembers from './components/teams/TeamMembers'
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        {path: '/teams', component: TeamsList},
+        {path: '/', redirect:'/teams'}, 
+
+        {path: '/teams', component: TeamsList, children: [
+          {path: '/teams/:teamId', component: TeamMembers},  
+        ]},
+
         {path: '/users', component: UsersList},
-        {path: '/teams/:teamId', component: TeamMembers},
-    ]
+        
+        {path: '/:notFound(.*)', redirect: '/teams'},
+    ],
+    scrollBehavior(to, from,savedPosition) {
+        console.log(to, from,savedPosition)
+        if(savedPosition) {
+            return savedPosition
+        }
+        return {left: 0, top: 0}
+    }
 })
 
 const app = createApp(App)

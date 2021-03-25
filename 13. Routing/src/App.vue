@@ -3,6 +3,10 @@
   <main>
     <router-view></router-view>
   </main>
+
+  <footer>
+    <router-view></router-view>
+  </footer>
 </template>
 
 <script>
