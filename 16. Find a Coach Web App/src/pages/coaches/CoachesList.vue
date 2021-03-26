@@ -1,32 +1,34 @@
 <template>
   <section>Filter</section>
-
   <section>
+    <base-card>
     <div class="controls">
-      <button>Refresh</button>
-      <router-link to="/register">Register</router-link>
+      <base-button mode="outline">Refresh</base-button>
+      <base-button to="/register" link>Register</base-button>
     </div>
-    <ul v-if="hasCoaches">
-      <li v-for="coach in filteredCoaches" :key="coach.id">
-        <coach-item
-        :id="coach.id"
-        :first-name="coach.firstName"
-        :last-name="coach.lastName"
-        :key="coach.id"
-        :rate="coach.hourlyRate"
-        :areas="coach.areas"
-        ></coach-item>
-      </li>
-    </ul>
-    <h1 v-else>Has no data</h1>
+      <ul v-if="hasCoaches">
+        <li v-for="coach in filteredCoaches" :key="coach.id">
+          <coach-item
+            :id="coach.id"
+            :first-name="coach.firstName"
+            :last-name="coach.lastName"
+            :key="coach.id"
+            :rate="coach.hourlyRate"
+            :areas="coach.areas"
+          ></coach-item>
+        </li>
+      </ul>
+      <h1 v-else>Has no data</h1>
+    </base-card>
   </section>
+  
 </template>
 
 <script>
 import CoachItem from '../../components/coaches/CoachItem';
 export default {
   components: {
-    CoachItem,
+    CoachItem
   },
   computed: {
     filteredCoaches() {
