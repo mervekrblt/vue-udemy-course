@@ -21,7 +21,7 @@ export default {
             return `${this.firstName} ${this.lastName}`
         },
         coachContactLink() {
-            return `${this.$route.path}/${this.id}/contact`
+            return `${this.$route.path}/${this.id}`
         },
         coachDetailsLink() {
             return `${this.$route.path}/${this.id}`
