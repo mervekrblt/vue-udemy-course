@@ -71,9 +71,18 @@ export default {
     }
   },
 
+  created() {
+    this.loadCoaches()
+  },
+
   methods: {
     setFilters(updatedFilters) {
       this.activeFilters = updatedFilters
+    },
+
+    //fetching coaches action
+    loadCoaches() {
+      return this.$store.dispatch('coaches/loadedCoaches')
     }
   }
 };
