@@ -11,7 +11,7 @@
         <input type="text" id="password" v-model.trim="password" />
       </div>
 
-      <p v-if="!fromIsValid">Enter valid email and password</p>
+      <p v-if="!formIsvalid">Enter valid email and password</p>
 
       <base-button>{{ submitButtonCaption }}</base-button>
       <base-button type="button" @click="switchAuthMode">{{ switchModeButtonCaption }}</base-button>
@@ -49,7 +49,7 @@ export default {
   },
 
   methods: {
-    submitForm() {
+    async submitForm() {
       this.formIsvalid = true;
       if (
         this.email === '' ||
@@ -58,6 +58,16 @@ export default {
       ) {
         this.formIsvalid = false;
         return;
+      }
+
+      // check signup is pressed otherwise dont signup
+      if(this.mode === 'login'){
+        return
+      }else {
+        await this.$store.dispatch('signup', {
+          email: this.email,
+          password: this.password
+        })
       }
     },
 
