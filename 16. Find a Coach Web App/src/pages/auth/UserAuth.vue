@@ -62,7 +62,10 @@ export default {
 
       // check signup is pressed otherwise dont signup
       if(this.mode === 'login'){
-        return
+        await this.$store.dispatch('login', {
+          email: this.email,
+          password: this.password
+        })
       }else {
         await this.$store.dispatch('signup', {
           email: this.email,
