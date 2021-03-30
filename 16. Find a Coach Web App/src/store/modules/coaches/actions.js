@@ -2,6 +2,7 @@ export default {
     async registerCoach(context, data) {
         //console.log(formData)
         //console.log(context)
+        const token = context.rootGetters.token
 
         const userId = context.rootGetters.userId
         const coachData = {
@@ -12,7 +13,7 @@ export default {
             areas: data.areas
         }
 
-        const response = await fetch(`https://find-coach-6bd32-default-rtdb.firebaseio.com/coaches/${userId}.json`, {
+        const response = await fetch(`https://find-coach-6bd32-default-rtdb.firebaseio.com/coaches/${userId}.json?auth=${token}`, {
             method: 'PUT',
             body: JSON.stringify(coachData)
         })
