@@ -5,7 +5,8 @@
     <base-card>
     <div class="controls">
       <base-button mode="outline">Refresh</base-button>
-      <base-button to="/register" link v-if="!isCoach">Register</base-button>
+      <base-button link to="/auth" v-if="!isLoggedIn">Log in</base-button>
+      <base-button to="/register" link v-if="!isCoach && isLoggedIn">Register</base-button>
     </div>
       <ul v-if="hasCoaches">
         <li v-for="coach in filteredCoaches" :key="coach.id">
@@ -34,6 +35,10 @@ export default {
     CoachFilter
   },
   computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated
+    },
+
     isCoach() {
       console.log(this.$store.getters['coaches/isCoach'])
       return this.$store.getters['coaches/isCoach']
